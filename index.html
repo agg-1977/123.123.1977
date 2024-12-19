@@ -18,30 +18,40 @@
         }
         .header {
             font-family: 'Playfair Display', serif;
-            font-size: var(--header-font-size, 36px);
+            font-size: 36px;
             font-weight: bold;
+            color: #ffffff; /* White color for the header */
+            background-color: #a67c52; /* Background color for the header */
+            padding: 10px;
+            border-radius: 10px;
         }
         .sub-header {
             font-family: 'Playfair Display', serif;
-            font-size: var(--sub-header-font-size, 18px);
+            font-size: 18px;
+            color: #a67c52; /* Same color as the main text color */
+            background-color: #ffffff; /* White background color */
+            padding: 5px;
+            border-radius: 5px;
             margin-top: -10px;
         }
         .info {
             display: flex;
             justify-content: space-between;
             margin: 20px 0;
-            font-size: var(--info-font-size, 18px);
+            font-size: 18px;
         }
         .info div {
             flex: 1;
         }
         .info div:first-child {
             text-align: left;
-            color: var(--info-left-color, #ffffff);
+            color: #ffffff; /* White color */
+            font-weight: bold; /* Bold text */
         }
         .info div:last-child {
             text-align: right;
-            color: var(--info-right-color, #ffffff);
+            color: #ffffff;
+            font-weight: bold; /* Bold text */
         }
         .card-container {
             display: flex;
@@ -50,46 +60,46 @@
             flex-wrap: wrap;
         }
         .card {
-            background-color: var(--card-background-color, #ffffff);
-            color: var(--card-text-color, #a67c52);
-            padding: var(--card-padding, 30px);
-            border-radius: var(--card-border-radius, 20px);
-            width: var(--card-width, 200px);
+            background-color: #ffffff;
+            color: #480607; /* Change color to #480607 */
+            padding: 30px;
+            border-radius: 20px;
+            width: 200px;
             font-family: 'Playfair Display', serif;
             font-weight: bold;
             margin: 10px;
         }
         .card h2 {
-            font-size: var(--card-header-font-size, 40px);
-            margin-bottom: var(--card-header-margin-bottom, 15px);
+            font-size: 40px;
+            margin-bottom: 15px;
         }
         .card p {
-            font-size: var(--card-text-font-size, 50px);
-            margin: var(--card-text-margin, 10px 0);
+            font-size: 50px;
+            margin: 10px 0;
         }
         .video-player {
-            margin: var(--video-player-margin, 20px 0);
+            margin: 20px 0;
         }
         .button-container {
-            margin: var(--button-container-margin, 20px 0);
+            margin: 20px 0;
         }
         .button-container a {
             text-decoration: none;
-            color: var(--button-text-color, #ffffff);
-            background-color: var(--button-background-color, #a67c52);
-            padding: var(--button-padding, 10px 20px);
-            border-radius: var(--button-border-radius, 5px);
-            font-size: var(--button-font-size, 18px);
+            color: #ffffff;
+            background-color: #a67c52;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
             font-family: 'Playfair Display', serif;
             margin: 0 10px;
         }
         .button-container a:hover {
-            background-color: var(--button-hover-background-color, #8a5e3b);
+            background-color: #8a5e3b;
         }
         .footer {
-            margin: var(--footer-margin, 20px 0);
-            font-size: var(--footer-font-size, 14px);
-            color: var(--footer-text-color, #ffffff);
+            margin: 20px 0;
+            font-size: 14px;
+            color: #ffffff;
         }
         @media (max-width: 600px) {
             .info {
@@ -124,7 +134,7 @@
         <div class="sub-header">Since 1977</div>
         <div class="info">
             <div>BRANCH: PHALTAN</div>
-            <div>DATE: 27/7/2024</div>
+            <div>DATE: 19/12/2024</div>
         </div>
     </div>
     <div class="container">
@@ -132,9 +142,9 @@
             <div class="card">
                 <h2>GOLD</h2>
                 <p>22k</p>
-                <p>0000</p>
+                <p>70100</p>
                 <p>23.5k</p>
-                <p>0000</p>
+                <p>74700</p>
             </div>
 
             <div class="video-player">
@@ -142,11 +152,10 @@
                     <source src="AD.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-
             </div>
             <div class="card">
                 <h2>SILVER</h2>
-                <p>0000</p>
+                <p>890</p>
             </div>
         </div>
       
