@@ -1,0 +1,172 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashok Gandhi Group</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color, #0a2a23);
+            color: var(--text-color, #a67c52);
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: bold;
+            color: #ffffff; /* White color for the header */
+            background-color: #a67c52; /* Background color for the header */
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .sub-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #a67c52; /* Same color as the main text color */
+            background-color: #ffffff; /* White background color */
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: -10px;
+        }
+        .info {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        .info div {
+            flex: 1;
+        }
+        .info div:first-child {
+            text-align: left;
+            color: #ffffff; /* White color */
+            font-weight: bold; /* Bold text */
+        }
+        .info div:last-child {
+            text-align: right;
+            color: #ffffff;
+            font-weight: bold; /* Bold text */
+        }
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #ffffff;
+            color: #480607; /* Change color to #480607 */
+            padding: 30px;
+            border-radius: 20px;
+            width: 200px;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            margin: 10px;
+        }
+        .card h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .card p {
+            font-size: 50px;
+            margin: 10px 0;
+        }
+        .video-player {
+            margin: 20px 0;
+        }
+        .button-container {
+            margin: 20px 0;
+        }
+        .button-container a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #a67c52;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-family: 'Playfair Display', serif;
+            margin: 0 10px;
+        }
+        .button-container a:hover {
+            background-color: #8a5e3b;
+        }
+        .footer {
+            margin: 20px 0;
+            font-size: 14px;
+            color: #ffffff;
+        }
+        @media (max-width: 600px) {
+            .info {
+                flex-direction: column;
+                align-items: center;
+            }
+            .info div {
+                text-align: center;
+                margin: 5px 0;
+            }
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                width: 90%;
+            }
+            .video-player video {
+                width: 100%;
+                height: auto;
+            }
+            .button-container a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Ashok Gandhi Group</div>
+        <div class="sub-header">Since 1977</div>
+        <div class="info">
+            <div>BRANCH: PHALTAN</div>
+            <div>DATE: 27/7/2024</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card-container">
+            <div class="card">
+                <h2>GOLD</h2>
+                <p>22k</p>
+                <p>0000</p>
+                <p>23.5k</p>
+                <p>0000</p>
+            </div>
+
+            <div class="video-player">
+                <video width="200" height="400" controls autoplay loop>
+                    <source src="AD.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="card">
+                <h2>SILVER</h2>
+                <p>0000</p>
+            </div>
+        </div>
+      
+        <div class="button-container">
+            <a href="#">Home</a>
+            <a href="collection.html" target="_blank">Collection</a>
+            <a href="#">Stores</a>
+        </div>
+        <div class="footer">
+            &copy; 2024 Ashok Gandhi Group. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>
