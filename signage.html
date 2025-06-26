@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digital Signage Display</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+    .slideshow, .webpage {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+    .slideshow img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slideshow img.active {
+      opacity: 1;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slideshow Section -->
+  <div class="slideshow">
+    <img src="1.jpeg" class="active" />
+    <img src="2.jpeg" />
+    <img src="3.jpeg" />
+  </div>
+
+  <!-- Embedded Webpage Section -->
+  <div class="webpage" style="display: none;">
+    <iframe src="https://agg-1977.github.io/123.123.1977/rate.html"></iframe>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slideshow img');
+    let current = 0;
+    let slideInterval;
+
+    function startSlideshow() {
+      document.querySelector('.webpage').style.display = 'none';
+      document.querySelector('.slideshow').style.display = 'block';
+      current = 0;
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active');
+        if (index === 0) slide.classList.add('active');
+      });
+
+      slideInterval = setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 10000);
+
+      // After one full slideshow loop, show the webpage
+      setTimeout(() => {
+        clearInterval(slideInterval);
+        document.querySelector('.slideshow').style.display = 'none';
+        document.querySelector('.webpage').style.display = 'block';
+
+        // Show the webpage for 1 minute, then restart the slideshow
+        setTimeout(() => {
+          startSlideshow();
+        }, 60000); // 1 minute = 60000ms
+
+      }, slides.length * 10000);
+    }
+
+    // Start initially
+    startSlideshow();
+  </script>
+
+</body>
+</html>
