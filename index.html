@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashok Jewellers | Live TV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; --light-gold: #f1d592; --dark-bg: #050505; --glass: rgba(255, 255, 255, 0.07); --glass-border: rgba(255, 255, 255, 0.1); --white: #FFFFFF; }
+        body, html { margin: 0; padding: 0; height: 100vh; width: 100vw; background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); color: #fff; font-family: 'Montserrat', sans-serif; overflow: hidden; }
+        .main-wrapper { display: flex; flex-direction: column; height: 100vh; padding: 20px 40px 80px 40px; box-sizing: border-box; }
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gold); padding-bottom: 15px; margin-bottom: 20px; }
+        .brand-info h1 { font-family: 'Cinzel', serif; font-size: 3.2rem; margin: 0; letter-spacing: 3px; color: var(--gold); }
+        .live-indicator { display: inline-flex; align-items: center; background: rgba(212, 175, 55, 0.1); padding: 5px 15px; border-radius: 20px; border: 1px solid var(--gold); font-size: 0.9rem; color: var(--gold); margin-top: 5px; font-weight: 700; }
+        .dot { height: 10px; width: 10px; background-color: #ff4d4d; border-radius: 50%; display: inline-block; margin-right: 8px; box-shadow: 0 0 10px #ff4d4d; animation: blink 1.5s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .content-grid { display: grid; grid-template-columns: 1.3fr 2fr 1.3fr; gap: 25px; flex-grow: 1; margin-bottom: 10px; }
+        .rate-card { background: var(--glass); backdrop-filter: blur(15px); border-radius: 25px; padding: 35px 20px; text-align: center; display: flex; flex-direction: column; justify-content: center; border: 1px solid var(--glass-border); }
+        .rate-card h2 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 2.5rem; margin-top: 0; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
+        .purity { font-size: 1.4rem; color: var(--light-gold); display: block; margin-top: 20px; font-weight: 500; text-transform: uppercase; }
+        .price { font-size: 4.8rem; font-weight: 800; display: block; margin: 5px 0; color: #fff; text-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+        .price::after { content: " /10g"; font-size: 1.2rem; opacity: 0.6; }
+        .silver-price::after { content: " /kg"; }
+        .video-container { border-radius: 25px; overflow: hidden; border: 2px solid var(--gold); background: #000; }
+        video { width: 100%; height: 100%; object-fit: cover; }
+        .ticker-wrap { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--white); color: #000; height: 65px; line-height: 65px; overflow: hidden; }
+        .ticker-content { display: inline-block; white-space: nowrap; padding-left: 100%; animation: ticker-scroll 35s linear infinite; font-weight: 800; font-size: 1.5rem; }
+        @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        .ticker-content span { padding-right: 150px; }
+        .info-footer { display: flex; justify-content: space-between; padding: 10px 0; font-size: 1.2rem; color: var(--light-gold); }
+    </style>
+</head>
+<body>
+<div class="main-wrapper">
+    <header>
+        <div class="brand-info">
+            <h1>ASHOK JEWELLERS & SONS</h1>
+            <div class="live-indicator"><span class="dot"></span>Last Updated: <span id="update-time">Loading...</span></div>
+        </div>
+        <div style="text-align: right;">
+            <div id="clock" style="font-size: 3rem; font-weight: 800;">00:00:00</div>
+            <div id="date" style="font-size: 1.3rem; color: var(--gold);">LOADING DATE...</div>
+        </div>
+    </header>
+    <div class="content-grid">
+        <div class="rate-card">
+            <h2>GOLD RATE</h2>
+            <span class="purity">23.5K (995)</span><span class="price" id="val-gold23">--</span>
+            <span class="purity">22K (916)</span><span class="price" id="val-gold22">--</span>
+        </div>
+        <div class="video-container"><video autoplay muted loop playsinline><source src="ad1.MOV" type="video/mp4"></video></div>
+        <div class="rate-card">
+            <h2>SILVER & 18K</h2>
+            <span class="purity">999 FINE SILVER</span><span class="price silver-price" id="val-silver">--</span>
+            <span class="purity" style="margin-top: 40px;">18K HALLMARK GOLD</span><span class="price" id="val-gold18">--</span>
+        </div>
+    </div>
+    <div class="info-footer">
+        <span><i class="fas fa-map-marker-alt"></i> Prithvi Chowk, Phaltan</span>
+        <span><i class="fab fa-instagram"></i> @ashok_jewellers_and_sons</span>
+        <span><i class="fas fa-phone-alt"></i> +91 9309383699</span>
+    </div>
+</div>
+<div class="ticker-wrap"><div class="ticker-content"><span>⚠️ Rates are subject to market fluctuations.</span><span>✨ Quality and Trust since 1977.</span><span>💎 HUID Hallmarked Gold Jewellery.</span></div></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+<script>
+    // PASTE YOUR FIREBASE CONFIG HERE
+    const firebaseConfig = {
+  apiKey: "AIzaSyDP_W7py_geZGaD9Fwk34fE0bo1GLf6u40",
+  authDomain: "ashokjewellers-1e5ab.firebaseapp.com",
+  projectId: "ashokjewellers-1e5ab",
+  storageBucket: "ashokjewellers-1e5ab.firebasestorage.app",
+  messagingSenderId: "899077006882",
+  appId: "1:899077006882:web:2fb75fd0d8f45c2df44c7b"
+};
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // Listen for changes
+    db.ref('rates').on('value', (snapshot) => {
+        const data = snapshot.val();
+        if(data) {
+            document.getElementById('val-gold23').innerText = data.gold23;
+            document.getElementById('val-gold22').innerText = data.gold22;
+            document.getElementById('val-silver').innerText = data.silver;
+            document.getElementById('val-gold18').innerText = data.gold18;
+            document.getElementById('update-time').innerText = data.time;
+        }
+    });
+
+    function updateClock() {
+        const now = new Date();
+        document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        document.getElementById('date').textContent = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+    setInterval(updateClock, 1000); updateClock();
+</script>
+</body>
+</html>

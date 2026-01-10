@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Rates</title>
+    <style>
+        body { font-family: sans-serif; background: #121212; color: white; padding: 20px; }
+        .card { background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #d4af37; }
+        input { width: 100%; padding: 15px; margin: 10px 0; background: #333; border: 1px solid #555; color: white; border-radius: 5px; box-sizing: border-box; font-size: 1.2rem; }
+        button { width: 100%; padding: 20px; background: #d4af37; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Ashok Jewellers Admin</h2>
+        <input type="text" id="g23" placeholder="Gold 23.5K">
+        <input type="text" id="g22" placeholder="Gold 22K">
+        <input type="text" id="sil" placeholder="Silver">
+        <input type="text" id="g18" placeholder="Gold 18K">
+        <button onclick="update()">UPDATE TV NOW</button>
+        <p id="msg" style="display:none; color: lime;">Updating...</p>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+    <script>
+        // PASTE THE SAME FIREBASE CONFIG HERE
+        const firebaseConfig = {
+  apiKey: "AIzaSyDP_W7py_geZGaD9Fwk34fE0bo1GLf6u40",
+  authDomain: "ashokjewellers-1e5ab.firebaseapp.com",
+  projectId: "ashokjewellers-1e5ab",
+  storageBucket: "ashokjewellers-1e5ab.firebasestorage.app",
+  messagingSenderId: "899077006882",
+  appId: "1:899077006882:web:2fb75fd0d8f45c2df44c7b"
+};
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        function update() {
+            const data = {
+                gold23: document.getElementById('g23').value,
+                gold22: document.getElementById('g22').value,
+                silver: document.getElementById('sil').value,
+                gold18: document.getElementById('g18').value,
+                time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            };
+            db.ref('rates').set(data).then(() => {
+                document.getElementById('msg').style.display = 'block';
+                setTimeout(() => document.getElementById('msg').style.display = 'none', 2000);
+            });
+        }
+    </script>
+</body>
+</html>
