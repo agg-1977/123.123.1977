@@ -2,22 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=320, height=480, initial-scale=1.0">
-    <title>AJS Vertical Noir</title>
+    <meta name="viewport" content="width=480, height=320, initial-scale=1.0">
+    <title>AJS Noir Display</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #FFFFFF;
-            --bg: #000000;
-            --card-bg: rgba(255, 255, 255, 0.04);
-            --border: rgba(255, 255, 255, 0.15);
+            /* Black and White Palette */
+            --primary: #FFFFFF; /* All text and accents are pure white */
+            --bg: #000000; /* Pure deep black background */
+            --card-bg: rgba(255, 255, 255, 0.04); /* Subtle white overlay for cards */
+            --border: rgba(255, 255, 255, 0.15); /* High-contrast white borders */
         }
 
         body, html {
             margin: 0; padding: 0;
-            width: 320px; height: 480px;
+            width: 480px; height: 320px;
             background: var(--bg);
-            color: #fff;
+            color: #fff; /* Base text is white */
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow: hidden;
             display: flex;
@@ -25,95 +26,88 @@
         }
 
         header {
-            height: 100px; /* Taller header for portrait logo */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
-            flex-shrink: 0;
-        }
-
-        .logo img { 
-            height: 55px; /* Large Logo */
-            width: auto;
-            margin-bottom: 5px;
-        }
-
-        .header-meta {
+            height: 75px; /* Increased header for larger logo */
             display: flex;
             justify-content: space-between;
-            width: 90%;
-            font-size: 10px;
-            color: #888;
-            text-transform: uppercase;
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 1px solid var(--border); /* Monochrome border */
+            flex-shrink: 0;
+            background: #050505; /* Slightly lighter black for depth */
         }
 
-        #clock { font-weight: 700; color: var(--primary); }
+        /* Increased Logo Size */
+        .logo img { 
+            height: 48px; /* Significantly larger */
+            width: auto; 
+            display: block;
+        }
 
-        /* Vertical List Layout */
-        .list-container {
+        .header-info { text-align: right; }
+        #update-time { font-size: 9px; color: #888; text-transform: uppercase; display: block; margin-bottom: 2px;}
+        #clock { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 12px;
+            padding: 15px 20px;
             flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 15px;
         }
 
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .label-group {
+            border-radius: 15px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            padding-left: 15px;
+            transition: all 0.3s ease;
         }
 
+        /* Pure White Bold Labels */
         .label { 
-            font-size: 10px; 
+            font-size: 11px; 
+            text-transform: uppercase; 
             letter-spacing: 1px; 
-            color: var(--primary); 
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .unit {
-            font-size: 8px;
-            color: #555;
-            font-weight: 600;
+            color: var(--primary); /* Gold replaced with white */
+            font-weight: 800; /* Extra Bold */
+            margin-bottom: 4px;
         }
         
+        /* Bright White Price */
         .price { 
-            font-size: 24px; 
+            font-size: 26px; 
             font-weight: 800; 
-            color: #FFFFFF;
+            margin: 0; 
+            color: #FFFFFF; /* Set to pure white for pop */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Subtle white glow */
         }
+        
+        .price span { font-size: 10px; opacity: 0.3; margin-left: 3px; font-weight: 400; color: #fff; }
 
         .footer-ticker {
             width: 100%;
-            height: 35px;
-            background: #050505;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.02); /* Monochrome background */
             border-top: 1px solid var(--border);
-            line-height: 35px;
+            line-height: 30px;
             overflow: hidden;
             flex-shrink: 0;
+            margin-top: auto;
         }
 
+        /* White Ticker Text */
         .ticker-move {
             display: inline-block;
             white-space: nowrap;
             padding-left: 100%;
-            animation: scroll 15s linear infinite;
+            animation: scroll 22s linear infinite;
             font-size: 11px;
             font-weight: 700;
-            color: #888;
+            color: #AAAAAA; /* Softer white for legal text */
         }
 
         @keyframes scroll {
@@ -128,40 +122,28 @@
     <div class="logo">
         <img src="ajslogo.png" alt="AJS Logo">
     </div>
-    <div class="header-meta">
+    <div class="header-info">
         <span id="update-time">Syncing...</span>
-        <span id="clock">00:00</span>
+        <div id="clock">00:00</div>
     </div>
 </header>
 
-<div class="list-container">
+<div class="grid">
     <div class="card">
-        <div class="label-group">
-            <div class="label">GOLD 23.5K</div>
-            <div class="unit">PER 10G</div>
-        </div>
-        <div class="price" id="val-gold23">--</div>
+        <div class="label">GOLD 23.5K</div>
+        <div class="price" id="val-gold23">--<span>/10g</span></div>
     </div>
     <div class="card">
-        <div class="label-group">
-            <div class="label">GOLD 22K</div>
-            <div class="unit">PER 10G</div>
-        </div>
-        <div class="price" id="val-gold22">--</div>
+        <div class="label">GOLD 22K</div>
+        <div class="price" id="val-gold22">--<span>/10g</span></div>
     </div>
     <div class="card">
-        <div class="label-group">
-            <div class="label">SILVER 999</div>
-            <div class="unit">PER 1G</div>
-        </div>
-        <div class="price" id="val-silver">--</div>
+        <div class="label">SILVER 999</div>
+        <div class="price" id="val-silver">--<span>/g</span></div>
     </div>
     <div class="card">
-        <div class="label-group">
-            <div class="label">GOLD 18K</div>
-            <div class="unit">PER 10G</div>
-        </div>
-        <div class="price" id="val-gold18">--</div>
+        <div class="label">GOLD 18K</div>
+        <div class="price" id="val-gold18">--<span>/10g</span></div>
     </div>
 </div>
 
@@ -188,11 +170,12 @@
     db.ref('rates').on('value', (snapshot) => {
         const data = snapshot.val();
         if(data) {
-            document.getElementById('val-gold23').innerText = data.gold23;
-            document.getElementById('val-gold22').innerText = data.gold22;
-            document.getElementById('val-gold18').innerText = data.gold18;
-            document.getElementById('val-silver').innerText = data.silver;
-            if(data.time) document.getElementById('update-time').innerText = data.time;
+            // Using childNodes[0] to update only the text and not the <span>/10g</span>
+            document.getElementById('val-gold23').childNodes[0].nodeValue = data.gold23;
+            document.getElementById('val-gold22').childNodes[0].nodeValue = data.gold22;
+            document.getElementById('val-gold18').childNodes[0].nodeValue = data.gold18;
+            document.getElementById('val-silver').childNodes[0].nodeValue = data.silver;
+            if(data.time) document.getElementById('update-time').innerText = "Updated: " + data.time;
         }
     });
 
