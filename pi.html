@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=480, height=320, initial-scale=1.0">
+    <title>AJS Bold Display</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --bg: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(212, 175, 55, 0.2);
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 480px; height: 320px;
+            background: var(--bg);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            flex-shrink: 0;
+        }
+
+        .logo img { height: 32px; width: auto; }
+        .header-info { text-align: right; }
+        #update-time { font-size: 9px; color: #666; text-transform: uppercase; display: block; }
+        #clock { font-size: 1.1rem; font-weight: 700; color: var(--gold); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 12px;
+            padding: 15px 20px;
+            flex-grow: 1;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 15px;
+        }
+
+        /* Bold Font for Labels */
+        .label { 
+            font-size: 11px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: var(--gold); 
+            font-weight: 800; /* Extra Bold */
+            margin-bottom: 4px;
+        }
+        
+        .price { font-size: 26px; font-weight: 800; margin: 0; }
+        .price span { font-size: 10px; opacity: 0.3; margin-left: 3px; font-weight: 400; }
+
+        .footer-ticker {
+            width: 100%;
+            height: 30px;
+            background: rgba(212, 175, 55, 0.05);
+            border-top: 1px solid var(--border);
+            line-height: 30px;
+            overflow: hidden;
+            flex-shrink: 0;
+            margin-top: auto;
+        }
+
+        .ticker-move {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: scroll 22s linear infinite;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="ajslogo.jpg" alt="AJS Logo">
+    </div>
+    <div class="header-info">
+        <span id="update-time">Syncing...</span>
+        <div id="clock">00:00</div>
+    </div>
+</header>
+
+<div class="grid">
+    <div class="card">
+        <div class="label">GOLD 23.5K</div>
+        <div class="price" id="val-gold23">--<span>/10g</span></div>
+    </div>
+    <div class="card">
+        <div class="label">GOLD 22K</div>
+        <div class="price" id="val-gold22">--<span>/10g</span></div>
+    </div>
+    <div class="card">
+        <div class="label">SILVER 999</div>
+        <div class="price" id="val-silver">--<span>/g</span></div>
+    </div>
+    <div class="card">
+        <div class="label">GOLD 18K</div>
+        <div class="price" id="val-gold18">--<span>/10g</span></div>
+    </div>
+</div>
+
+<div class="footer-ticker">
+    <div class="ticker-move">
+        ✨ Quality and Trust since 1977 • Ashok Gandhi Group • Hallmark Jewellery ✨
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database-compat.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyDxhCVRG9h6FneRzGTKp5oKH7cPJ4KP7ME",
+        authDomain: "ajs-rate.firebaseapp.com",
+        projectId: "ajs-rate",
+        databaseURL: "https://ajs-rate-default-rtdb.firebaseio.com",
+        appId: "1:230516401745:web:c3dbe00e098b2622253a70"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    db.ref('rates').on('value', (snapshot) => {
+        const data = snapshot.val();
+        if(data) {
+            document.getElementById('val-gold23').childNodes[0].nodeValue = data.gold23;
+            document.getElementById('val-gold22').childNodes[0].nodeValue = data.gold22;
+            document.getElementById('val-gold18').childNodes[0].nodeValue = data.gold18;
+            document.getElementById('val-silver').childNodes[0].nodeValue = data.silver;
+            if(data.time) document.getElementById('update-time').innerText = "Updated: " + data.time;
+        }
+    });
+
+    function updateClock() {
+        const now = new Date();
+        document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', { 
+            hour12: true, hour: '2-digit', minute: '2-digit' 
+        });
+    }
+    setInterval(updateClock, 1000); updateClock();
+</script>
+</body>
+</html>
